@@ -1,3 +1,8 @@
+
+
+
+
+
 USE db_libro_express;
 
 -- Procedimientos, Inserts y trigger
@@ -63,11 +68,10 @@ DELIMITER ;
 -- Tabla libros
 
 DELIMiTER //
-
-CREATE PROCEDURE agregar_libros(titulo_libroo VARCHAR(50), anio_publicacionn INT, id_genero_libroo BINARY(36), estadoo ENUM('activo', 'inactivo', 'pendiente'))
+CREATE PROCEDURE agregar_libro(titulo_libroo VARCHAR(50), anio_publicacionn INT, id_genero_libroo BINARY(36), estadoo ENUM('activo', 'inactivo', 'pendiente'))
 BEGIN
         
-    INSERT INTO libros(titulo_libro, anio_publiacion, id_genero_libro, estado) VALUES (titulo_libroo, anio_publicacionn, id_genero_libroo, estado);
+    INSERT INTO libros(titulo_libro, anio_publicacion, id_genero_libro, estado) VALUES (titulo_libroo, anio_publicacionn, id_genero_libroo, estado);
 
 END //
 

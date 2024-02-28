@@ -64,7 +64,7 @@ DELIMITER ;
 
 DELIMiTER //
 
-CREATE PROCEDURE agregar_libros(titulo_libroo VARCHAR(50), anio_publicacionn INT, id_genero_libroo BINARY(36), estadoo ENUM('activo', 'inactivo', 'pendiente'))
+CREATE PROCEDURE agregar_libro(titulo_libroo VARCHAR(50), anio_publicacionn INT, id_genero_libroo BINARY(36), estadoo ENUM('activo', 'inactivo', 'pendiente'))
 BEGIN
         
     INSERT INTO libros(titulo_libro, anio_publiacion, id_genero_libro, estado) VALUES (titulo_libroo, anio_publicacionn, id_genero_libroo, estado);
@@ -86,7 +86,7 @@ BEGIN
 END
 
 //
-DELIMITER;
+DELIMITER ;
 
 
 -- INSERTS DE TODAS LAS TABLAS
