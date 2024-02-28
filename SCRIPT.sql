@@ -42,11 +42,22 @@ ALTER TABLE prestamos
 ADD CONSTRAINT fk_cliente_prestamo FOREIGN KEY (id_cliente) REFERENCES clientes(id_cliente);
 
 ALTER TABLE detalles_prestamos
-ADD CONSTRAINT fk_prestamos_detallesprestamos FOREIGN KEY (id_prestamo) REFERENCES prestamos(id_prestamo);
+ADD CONSTRAINT fk_prestamos_detalles_prestamos FOREIGN KEY (id_prestamo) REFERENCES prestamos(id_prestamo);
 
 ALTER TABLE detalles_prestamos
-ADD CONSTRAINT fk_libros_detallesprestamos FOREIGN KEY (id_libro) REFERENCES libros(id_libro);
+ADD CONSTRAINT fk_libros_detalles_prestamos FOREIGN KEY (id_libro) REFERENCES libros(id_libro);
 
 ALTER TABLE libros
-ADD CONSTRAINT fk_generoslibros_libros FOREIGN KEY (id_genero_libro) REFERENCES generos_libros(id_genero_libro);
+ADD CONSTRAINT fk_generos_libros_libros FOREIGN KEY (id_genero_libro) REFERENCES generos_libros(id_genero_libro);
 
+ALTER TABLE clientes
+ADD CONSTRAINT CH_telefono_clientes CHECK(LENGTH(telefono) > 8);
+
+ALTER TABLE prestamos 
+ALTER COLUMN fecha_inicio SET DEFAULT '2024-01-01';
+
+ALTER TABLE prestamos 
+ALTER COLUMN fecha_devolucion SET DEFAULT '2024-01-02';
+
+ALTER TABLE libros 
+ADD CONSTRAINT CH_anio_publicacion_libros CHECK(anio_publicacion > 1990);
