@@ -136,3 +136,18 @@ END //
 DELIMITER ;
 
 
+-- TRIGGER
+DELIMITER //
+
+CREATE TRIGGER actualizar_estado_libro AFTER INSERT ON detalles_prestamos
+FOR EACH ROW
+BEGIN 
+	UPDATE libros 
+	SET estado = 'pendiente'
+	WHERE id_libro = NEW.id_libro;
+END
+
+//
+DELIMITER;
+
+
