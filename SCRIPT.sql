@@ -149,5 +149,3 @@ END
 
 //
 DELIMITER;
-eterte
-sfsdf
