@@ -26,8 +26,8 @@ estado ENUM('activo', 'inactivo', 'pendiente')
 
 CREATE TABLE detalles_prestamos(
 id_detalle_prestamo BINARY(36) PRIMARY KEY DEFAULT UUID(),
-id_prestamo BINARY(35),
-id_libro BINARY(35)
+id_prestamo BINARY(36),
+id_libro BINARY(36)
 );
 
 CREATE TABLE libros (
@@ -63,4 +63,3 @@ ALTER COLUMN fecha_devolucion SET DEFAULT '2024-01-02';
 
 ALTER TABLE libros 
 ADD CONSTRAINT ch_anio_publicacion_libros CHECK(anio_publicacion > 1990);
-
