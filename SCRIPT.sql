@@ -51,7 +51,7 @@ ALTER TABLE libros
 ADD CONSTRAINT fk_generos_libros_libros FOREIGN KEY (id_genero_libro) REFERENCES generos_libros(id_genero_libro);
 
 ALTER TABLE clientes
-ADD CONSTRAINT CH_telefono_clientes CHECK(LENGTH(telefono) > 8);
+ADD CONSTRAINT ch_telefono_clientes CHECK(LENGTH(telefono) > 8);
 
 ALTER TABLE prestamos 
 ALTER COLUMN fecha_inicio SET DEFAULT '2024-01-01';
@@ -60,4 +60,4 @@ ALTER TABLE prestamos
 ALTER COLUMN fecha_devolucion SET DEFAULT '2024-01-02';
 
 ALTER TABLE libros 
-ADD CONSTRAINT CH_anio_publicacion_libros CHECK(anio_publicacion > 1990);
+ADD CONSTRAINT ch_anio_publicacion_libros CHECK(anio_publicacion > 1990);
