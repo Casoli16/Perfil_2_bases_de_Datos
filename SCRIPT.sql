@@ -1,0 +1,52 @@
+DROP DATABASE IF EXISTS db_libro_express;
+
+CREATE DATABASE db_libro_express;
+
+USE db_libro_express;
+
+CREATE TABLE clientes(
+id_cliente BINARY(36) PRIMARY KEY DEFAULT UUID(),
+nombre_cliente VARCHAR(50),
+email_cliente VARCHAR(100),
+telefono VARCHAR(10) 
+);
+
+CREATE TABLE generos_libros(
+id_genero_libro BINARY(36) PRIMARY KEY DEFAULT UUID(),
+nombre_genero_libro VARCHAR(50)
+);
+
+CREATE TABLE prestamos(
+id_prestamo BINARY(36) PRIMARY KEY DEFAULT UUID(),
+id_cliente BINARY(36),
+fecha_inicio DATE,
+fecha_devolucion DATE,
+estado ENUM('activo', 'inactivo', 'pendiente') 
+);
+
+CREATE TABLE detalles_prestamos(
+id_detalle_prestamo BINARY(36) PRIMARY KEY DEFAULT UUID(),
+id_prestamo BINARY(35),
+id_libro BINARY(35)
+);
+
+CREATE TABLE libros (
+id_libro BINARY(36) PRIMARY KEY DEFAULT UUID(),
+titulo_libro VARCHAR(50),
+anio_publicacion INT,
+id_genero_libro BINARY(36),
+estado ENUM('activo', 'inactivo', 'pendiente')
+);
+
+ALTER TABLE prestamos
+ADD CONSTRAINT fk_cliente_prestamo FOREIGN KEY (id_cliente) REFERENCES clientes(id_cliente);
+
+ALTER TABLE detalles_prestamos
+ADD CONSTRAINT fk_prestamos_detallesprestamos FOREIGN KEY (id_prestamo) REFERENCES prestamos(id_prestamo);
+
+ALTER TABLE detalles_prestamos
+ADD CONSTRAINT fk_libros_detallesprestamos FOREIGN KEY (id_libro) REFERENCES libros(id_libro);
+
+ALTER TABLE libros
+ADD CONSTRAINT fk_generoslibros_libros FOREIGN KEY (id_genero_libro) REFERENCES generos_libros(id_genero_libro);
+
