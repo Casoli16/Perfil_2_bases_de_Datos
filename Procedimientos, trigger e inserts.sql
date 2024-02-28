@@ -6,7 +6,7 @@ USE db_libro_express;
 
 -- Tabla clientes
 
-DELIMiTER //
+DELIMITER //
 
 CREATE PROCEDURE agregar_cliente(nombre VARCHAR(50), email VARCHAR(100), telefono VARCHAR(10))
 BEGIN
@@ -20,7 +20,7 @@ DELIMITER ;
 
 -- Tabla generos_libros
 
-DELIMiTER //
+DELIMITER //
 
 CREATE PROCEDURE agregar_generos_libros(nombre VARCHAR(50))
 BEGIN
@@ -62,12 +62,12 @@ DELIMITER ;
 
 -- Tabla libros
 
-DELIMiTER //
+DELIMITER //
 
 CREATE PROCEDURE agregar_libro(titulo_libroo VARCHAR(50), anio_publicacionn INT, id_genero_libroo BINARY(36), estadoo ENUM('activo', 'inactivo', 'pendiente'))
 BEGIN
         
-    INSERT INTO libros(titulo_libro, anio_publiacion, id_genero_libro, estado) VALUES (titulo_libroo, anio_publicacionn, id_genero_libroo, estado);
+    INSERT INTO libros(titulo_libro, anio_publicacion, id_genero_libro, estado) VALUES (titulo_libroo, anio_publicacionn, id_genero_libroo, estadoo);
 
 END //
 
@@ -106,6 +106,7 @@ CALL agregar_cliente('Elena', 'elena@example.com', '987654123');
 CALL agregar_cliente('Miguel', 'miguel@example.com', '654123789');
 CALL agregar_cliente('Lucía', 'lucia@example.com', '789654321');
 CALL agregar_cliente('Pablo', 'pablo@example.com', '123789456');
+CALL agregar_cliente('Josesito', 'josesito@example.com', '0303 9292');
 
 -- tabla generos de libros
 CALL agregar_generos_libros('Fantasia');
@@ -139,6 +140,8 @@ CALL agregar_libro('Moby-Dick', 2000, 'e3c0ef4c-d659-11ee-9d4a-5cbaef0d8908', 'i
 CALL agregar_libro('Orgullo y prejuicio', 2000, 'e3c5ec7b-d659-11ee-9d4a-5cbaef0d8908', 'pendiente');
 CALL agregar_libro('Las aventuras de Tom Sawyer', 2000, 'e3cade9e-d659-11ee-9d4a-5cbaef0d8908', 'activo');
 CALL agregar_libro('Cumbres borrascosas', 2000, 'e3cf5da9-d659-11ee-9d4a-5cbaef0d8908', 'inactivo');
+CALL agregar_libro('Orgullo y prejuicio', 2000, 'e3c5ec7b-d659-11ee-9d4a-5cbaef0d8908', 'activo');
+
 
 -- tablprestamos
 CALL agregar_prestamos('244f524b-d652-11ee-9d4a-5cbaef0d8908', 'activo');

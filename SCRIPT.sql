@@ -55,6 +55,12 @@ ADD CONSTRAINT fk_generos_libros_libros FOREIGN KEY (id_genero_libro) REFERENCES
 ALTER TABLE clientes
 ADD CONSTRAINT ch_telefono_clientes CHECK(LENGTH(telefono) > 8);
 
+ALTER TABLE clientes
+ADD CONSTRAINT UN_telefono_clientes UNIQUE(telefono);
+
+ALTER TABLE clientes
+ADD CONSTRAINT UN_correo_clientes UNIQUE(email_cliente);
+
 ALTER TABLE prestamos 
 ALTER COLUMN fecha_inicio SET DEFAULT '2024-01-01';
 
